@@ -16,19 +16,17 @@ public class App {
         Communication communication = context.getBean("communication", Communication.class);
 
         String sessionID = communication.allUsers();
-        System.out.println(sessionID);
 
-        User user = new User(3l, "James", "Brown", (byte) 33);
+        User user1 = new User(3l, "James", "Brown", (byte) 33);
+        User user2 = new User(3l, "Thomas", "Shelby", (byte) 33);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.add("Cookie", sessionID);
 
-        HttpEntity<User> request = new HttpEntity<>(user, headers);
+        HttpEntity<User> request = new HttpEntity<>(user1, headers);
 
-        communication.saveUser(user, request);
-
-        User user2 = new User(3l, "Thomas", "Shelby", (byte) 33);
+        communication.saveUser(user1, request);
 
         communication.updateUser(user2, request);
 

@@ -28,8 +28,10 @@ public class App {
 
         communication.saveUser(user1, request);
 
-        communication.updateUser(user2, request);
+        HttpEntity<User> request2 = new HttpEntity<>(user2, headers);
 
-        communication.deleteUser(3l, request);
+        communication.updateUser(user2, request2);
+
+        communication.deleteUser(3l, request2);
     }
 }
